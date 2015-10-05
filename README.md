@@ -1,0 +1,1 @@
+EHzSymcon stellt eine Anbindung der EHz von Hager und EMH über LAN zur Verfügung

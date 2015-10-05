@@ -1,0 +1,11 @@
+{
+	"id": "{9876378E-52C5-4E1C-B526-540ACBD448C2}",
+	"name": "EHzSplitter",
+	"type": 2,
+	"vendor": "EHzGateway",
+	"aliases": ["EHzGateway"],	 
+	"parentRequirements": ["{CA00BE4D-70E6-45C0-B16F-3A715F4B668A}"],
+	"childRequirements": ["{7951B1EF-C84F-4500-AD40-CC2AA1AB73C5}"],
+	"implemented": ["{C210C37D-7513-4F8E-9755-41016FF8F817}", "{47D204B9-D14C-4F86-917D-7AFB6F55C183}"],
+        "prefix": "EHz"
+}

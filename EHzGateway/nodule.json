@@ -1,0 +1,11 @@
+{
+	"id": "{95270958-FA6F-4AF8-BB77-C5F1B3990051}",
+	"name": "EHzGateway",
+	"type": 3,
+	"vendor": "EHzGateway",
+	"aliases": ["EHzGateway"],	 
+	"parentRequirements": ["{9F6CE787-2291-4BB4-8B6E-B15706A19ABE}"],
+	"childRequirements": [],
+	"implemented": ["{71AE56F6-8996-4F5A-B16F-FD892D9889AE}"],
+	"prefix": "EHz"
+}
