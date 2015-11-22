@@ -1,1 +1,2 @@
-EHzSymcon stellt eine Anbindung der EHz von Hager und EMH über LAN zur Verfügung
+EHzSymcon stellt eine Anbindung von EHz (elektronischen HaushaltszÃ¤hlern)
+Ã¼ber das SML Protokoll zur Verfï¿½gung

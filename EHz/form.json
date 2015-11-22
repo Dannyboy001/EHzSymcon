@@ -2,19 +2,9 @@
     "elements":
             [
                 {
-                    "name": "Open",
+                    "name": "Zählername",
                     "type": "CheckBox",
-                    "caption": "Open"
-                },
-                {
-                    "name": "Host",
-                    "type": "ValidationTextBox",
-                    "caption": "EHz Gateway Adresse"
-                },
-                {
-                    "name": "Port",
-                    "type": "NumberSpinner",
-                    "caption": "Gateway Port"
+                    "caption": "name"
                 }             
             ],
     "status":
