@@ -2,9 +2,9 @@
     "elements":
             [
                 {
-                    "name": "Name",
+                    "name": "name",
                     "type": "ValidationTextBox",
-                    "caption": "name"
+                    "caption": "Name des Zählers"
                 }             
             ]
    
