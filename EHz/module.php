@@ -1,4 +1,5 @@
 <?php
+require_once(__DIR__ . "/../sml.php");  // diverse Klassen
 
 
 class EHz extends IPSModule
@@ -15,12 +16,32 @@ class EHz extends IPSModule
     {
         //Never delete this line!
         parent::ApplyChanges();
+         //prüfen ob IO ein SerialPort ist
+        //        
+        // Zwangskonfiguration des SerialPort, wenn vorhanden und verbunden
+        // Aber nie bei einem Neustart :)
+        //if (IPS_GetKernelRunlevel() == KR_READY)
+        //{
+            $ParentID = $this->GetParent();
+            if (!($ParentID === false))
+            {
+                $ParentInstance = IPS_GetInstance($ParentID);
+                if ($ParentInstance['ModuleInfo']['ModuleID'] == '{6DC3D946-0D31-450F-A8C6-C42DB8D7D4F1}')
+                {
+                    if (IPS_GetProperty($ParentID, 'StopBits') <> '1')
+                        IPS_SetProperty($ParentID, 'StopBits', '1');
+                    if (IPS_GetProperty($ParentID, 'BaudRate') <> '9800')
+                        IPS_SetProperty($ParentID, 'BaudRate', '9800');
+                    if (IPS_GetProperty($ParentID, 'Parity') <> 'None')
+                        IPS_SetProperty($ParentID, 'Parity', 'None');
+                    if (IPS_GetProperty($ParentID, 'DataBits') <> '8')
+                        IPS_SetProperty($ParentID, 'DataBits', '8');
+                    if (IPS_HasChanges($ParentID))
+                        IPS_ApplyChanges($ParentID);
+                }
+            }
+        //}
 
-################## PUBLIC
-    /**
-     * This function will be available automatically after the module is imported with the module control.
-     * Using the custom prefix this function will be callable from PHP and JSON-RPC through:
-     */
     }
     
 ################## PRIVATE     
@@ -42,7 +63,15 @@ class EHz extends IPSModule
     }
    
     
-################## DATAPOINT RECEIVE FROM CHILD
+################## DATAPOINT RECEIVE
+    
+     public function ReceiveData($JSONString)
+    {
+        $data = json_decode($JSONString);
+        IPS_LogMessage('EHz <- Cutter:', bin2hex(utf8_decode($data->Buffer)));
+        $stream = bin2hex(utf8_decode($data->Buffer));
+        
+    }
     
 ################## DUMMYS / WOARKAROUNDS - protected
       
