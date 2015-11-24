@@ -28,10 +28,10 @@ class EHz extends IPSModule
                 {
                     if (IPS_GetProperty($ParentID, 'ParseType') <> '0')
                         IPS_SetProperty($ParentID, 'ParseType', '0');
-                    if (IPS_GetProperty($ParentID, 'LeftCutChar') <> '1 1 1 1')
-                        IPS_SetProperty($ParentID, 'LeftCutChar', '1 1 1 1');
-                    if (IPS_GetProperty($ParentID, 'RightCutChar') <> '27 27 27 27')
-                        IPS_SetProperty($ParentID, 'RightCutChar', '27 27 27 27');
+                    if (IPS_GetProperty($ParentID, 'LeftCutChar') <> '1111')
+                        IPS_SetProperty($ParentID, 'LeftCutChar', '1111');
+                    if (IPS_GetProperty($ParentID, 'RightCutChar') <> '1b1b1b1b')
+                        IPS_SetProperty($ParentID, 'RightCutChar', '1b1b1b1b');
                     //if (IPS_GetProperty($ParentID, 'DataBits') <> '8')
                     //    IPS_SetProperty($ParentID, 'DataBits', '8');
                     if (IPS_HasChanges($ParentID))
