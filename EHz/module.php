@@ -15,15 +15,16 @@ class EHz extends IPSModule
     {
         //Never delete this line!
         parent::ApplyChanges();
-         //prüfen ob IO ein SerialPort ist
+         //prüfen ob IO ein Cutter ist
         //        
-        // Zwangskonfiguration des SerialPort, wenn vorhanden und verbunden
+        // Zwangskonfiguration des Cutters, wenn vorhanden und verbunden
         // Aber nie bei einem Neustart :)
         
             $ParentID = $this->GetParent();
             if (!($ParentID === false))
             {
                 $ParentInstance = IPS_GetInstance($ParentID);
+                print_r ($ParentInstance);
                 if ($ParentInstance['ModuleInfo']['ModuleID'] == '{AC6C6E74-C797-40B3-BA82-F135D941D1A2}')
                 {
                     if (IPS_GetProperty($ParentID, 'StopBits') <> '1')
