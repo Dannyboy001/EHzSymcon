@@ -1,7 +1,6 @@
 <?php
 require_once(__DIR__ . "/../sml.php");  // diverse Klassen
 
-
 class EHz extends IPSModule
 {
     public function Create()
@@ -30,8 +29,8 @@ class EHz extends IPSModule
                 {
                     if (IPS_GetProperty($ParentID, 'StopBits') <> '1')
                         IPS_SetProperty($ParentID, 'StopBits', '1');
-                    if (IPS_GetProperty($ParentID, 'BaudRate') <> '9800')
-                        IPS_SetProperty($ParentID, 'BaudRate', '9800');
+                    if (IPS_GetProperty($ParentID, 'BaudRate') <> '9600')
+                        IPS_SetProperty($ParentID, 'BaudRate', '9600');
                     if (IPS_GetProperty($ParentID, 'Parity') <> 'None')
                         IPS_SetProperty($ParentID, 'Parity', 'None');
                     if (IPS_GetProperty($ParentID, 'DataBits') <> '8')
