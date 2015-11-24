@@ -24,15 +24,14 @@ class EHz extends IPSModule
             if (!($ParentID === false))
             {
                 $ParentInstance = IPS_GetInstance($ParentID);
-                print_r ($ParentInstance);
                 if ($ParentInstance['ModuleInfo']['ModuleID'] == '{AC6C6E74-C797-40B3-BA82-F135D941D1A2}')
                 {
-                    if (IPS_GetProperty($ParentID, 'Schnitte') <> 'Benutzerdefiniert')
-                        IPS_SetProperty($ParentID, 'Schnitte', 'Benutzerdefiniert');
-                    if (IPS_GetProperty($ParentID, 'Linke Trennzeichen') <> '01010101')
-                        IPS_SetProperty($ParentID, 'Linke Trennzeichen', '01010101');
-                    if (IPS_GetProperty($ParentID, 'Rechte Trennzeichen') <> '1B1B1B1B')
-                        IPS_SetProperty($ParentID, 'Rechte Trennzeichen', '1B1B1B1B');
+                    if (IPS_GetProperty($ParentID, 'ParseType') <> '0')
+                        IPS_SetProperty($ParentID, 'ParseType', '0');
+                    if (IPS_GetProperty($ParentID, 'LeftCutChar') <> '01 01 01 01')
+                        IPS_SetProperty($ParentID, 'LeftCutChar', '01 01 01 01');
+                    if (IPS_GetProperty($ParentID, 'RightCutChar') <> '1B 1B 1B 1B')
+                        IPS_SetProperty($ParentID, 'RightCutChar', '1B 1B 1B 1B');
                     //if (IPS_GetProperty($ParentID, 'DataBits') <> '8')
                     //    IPS_SetProperty($ParentID, 'DataBits', '8');
                     if (IPS_HasChanges($ParentID))
