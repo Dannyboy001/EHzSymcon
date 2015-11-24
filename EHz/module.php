@@ -7,7 +7,7 @@ class EHz extends IPSModule
     {
         //Never delete this line!
         parent::Create();
-        $this->ConnectParent("{6DC3D946-0D31-450F-A8C6-C42DB8D7D4F1}", "EHz");
+        $this->ConnectParent("{AC6C6E74-C797-40B3-BA82-F135D941D1A2}", "EHz");
         $this->RegisterPropertyString("name", "Hauptzähler");
     }
 
@@ -19,13 +19,12 @@ class EHz extends IPSModule
         //        
         // Zwangskonfiguration des SerialPort, wenn vorhanden und verbunden
         // Aber nie bei einem Neustart :)
-        //if (IPS_GetKernelRunlevel() == KR_READY)
-        //{
+        
             $ParentID = $this->GetParent();
             if (!($ParentID === false))
             {
                 $ParentInstance = IPS_GetInstance($ParentID);
-                if ($ParentInstance['ModuleInfo']['ModuleID'] == '{6DC3D946-0D31-450F-A8C6-C42DB8D7D4F1}')
+                if ($ParentInstance['ModuleInfo']['ModuleID'] == '{AC6C6E74-C797-40B3-BA82-F135D941D1A2}')
                 {
                     if (IPS_GetProperty($ParentID, 'StopBits') <> '1')
                         IPS_SetProperty($ParentID, 'StopBits', '1');
@@ -39,8 +38,7 @@ class EHz extends IPSModule
                         IPS_ApplyChanges($ParentID);
                 }
             }
-        //}
-
+        
     }
     
 ################## PRIVATE     
@@ -67,7 +65,7 @@ class EHz extends IPSModule
      public function ReceiveData($JSONString)
     {
         $data = json_decode($JSONString);
-        IPS_LogMessage('EHz <- Cutter:', bin2hex(utf8_decode($data->Buffer)));
+        IPS_LogMessage('EHz <- SerialPort:', bin2hex(utf8_decode($data->Buffer)));
         $stream = bin2hex(utf8_decode($data->Buffer));
         
     }
