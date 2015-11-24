@@ -6,28 +6,6 @@
                     "type": "CheckBox",
                     "caption": "name"
                 }             
-            ],
-    "status":
-            [
-                {
-                    "code": 102,
-                    "icon": "active",
-                    "caption": "Gateway ereichbar."
-                },
-                {
-                    "code": 104,
-                    "icon": "inactive",
-                    "caption": "Interface geschlossen."
-                },
-                {
-                    "code": 202,
-                    "icon": "error",
-                    "caption": "Gateway Adresse darf nicht leer sein."
-                },
-                {
-                    "code": 203,
-                    "icon": "error",
-                    "caption": "Verbindung zu Gateway verloren."
-                }
             ]
+   
 }
