@@ -28,10 +28,10 @@ class EHz extends IPSModule
                 {
                     if (IPS_GetProperty($ParentID, 'ParseType') <> '0')
                         IPS_SetProperty($ParentID, 'ParseType', '0');
-                    if (IPS_GetProperty($ParentID, 'LeftCutChar') <> 'chr(0x01).chr(0x01).chr(0x01).chr(0x01)')
-                        IPS_SetProperty($ParentID, 'LeftCutChar', 'chr(0x01).chr(0x01).chr(0x01).chr(0x01)');
-                    if (IPS_GetProperty($ParentID, 'RightCutChar') <> 'chr(0x1b).chr(0x1b).chr(0x1b).chr(0x1b)')
-                        IPS_SetProperty($ParentID, 'RightCutChar', 'chr(0x1b).chr(0x1b).chr(0x1b).chr(0x1b)');
+                    if (IPS_GetProperty($ParentID, 'LeftCutChar') <> '63 68 72 28 30 78 30 31 29 2E 63 68 72 28 30 78 30 31 29 2E 63 68 72 28 30 78 30 31 29 2E 63 68 72 28 30 78 30 31 29 ')
+                        IPS_SetProperty($ParentID, 'LeftCutChar', '63 68 72 28 30 78 30 31 29 2E 63 68 72 28 30 78 30 31 29 2E 63 68 72 28 30 78 30 31 29 2E 63 68 72 28 30 78 30 31 29 ');
+                    if (IPS_GetProperty($ParentID, 'RightCutChar') <> '63 68 72 28 30 78 31 62 29 2E 63 68 72 28 30 78 31 62 29 2E 63 68 72 28 30 78 31 62 29 2E 63 68 72 28 30 78 31 62 29 ')
+                        IPS_SetProperty($ParentID, 'RightCutChar', '63 68 72 28 30 78 31 62 29 2E 63 68 72 28 30 78 31 62 29 2E 63 68 72 28 30 78 31 62 29 2E 63 68 72 28 30 78 31 62 29 ');
                     //if (IPS_GetProperty($ParentID, 'DataBits') <> '8')
                     //    IPS_SetProperty($ParentID, 'DataBits', '8');
                     if (IPS_HasChanges($ParentID))
