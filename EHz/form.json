@@ -3,7 +3,7 @@
             [
                 {
                     "name": "Name",
-                    "type": "CheckBox",
+                    "type": "ValidationTextBox",
                     "caption": "name"
                 }             
             ]
