@@ -68,7 +68,7 @@ class EHz extends IPSModule
         
         for ($x==0 ; count ($Obis) ; $x++)
         {
-            if (strpos($stream, $Obis[$x]) !== false)                    
+            if (strpos($stream, $Obis[$x][0]) !== false)                    
             {
             $value = explode($Obis[$x], $stream);
             $variableID = CheckVariableTYP($Obis[$x][1], $Obis[$x][2], $Obis[$x][3], $this->InstanceID);
@@ -76,6 +76,7 @@ class EHz extends IPSModule
             IPS_LogMessage('EHz <- SerialPort:', $value);
             }
         }
+        $stream = '';
         return true;
     }
     
