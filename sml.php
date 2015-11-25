@@ -26,4 +26,18 @@ function Obis ($data)
     $Obis[21] = array ('0100470700FF'); //: Strom L3
     $Obis[22] = array ('0100480700FF'); //: Spannung L3 
     }
+    
+function CheckVariableTYP($name, $vartyp, $profile, $parentID)
+   {
+  		$InstanzID = @IPS_GetVariableIDByName($name, $parentID);
+                if ($InstanzID === false)
+                    {
+                    $InstanzID = IPS_CreateVariable($vartyp);
+                    IPS_SetName($InstanzID, $name); // Instanz benennen
+                    IPS_SetParent($InstanzID, $parentID);
+                    IPS_SetVariableCustomProfile($InstanzID, $profile);
+                    }
+                //echo "ID: ".$InstanzID." ".$name."\n";
+                return $InstanzID;
+   }
 ?>

@@ -28,12 +28,10 @@ class EHz extends IPSModule
                 {
                     if (IPS_GetProperty($ParentID, 'ParseType') <> '0')
                         IPS_SetProperty($ParentID, 'ParseType', '0');
-                    if (IPS_GetProperty($ParentID, 'LeftCutChar') <> '1111')
-                        IPS_SetProperty($ParentID, 'LeftCutChar', '1111');
-                    if (IPS_GetProperty($ParentID, 'RightCutChar') <> '1b1b1b1b')
-                        IPS_SetProperty($ParentID, 'RightCutChar', '1b1b1b1b');
-                    //if (IPS_GetProperty($ParentID, 'DataBits') <> '8')
-                    //    IPS_SetProperty($ParentID, 'DataBits', '8');
+                    if (IPS_GetProperty($ParentID, 'LeftCutChar') <> '01 01 01 01')
+                        IPS_SetProperty($ParentID, 'LeftCutChar', '01 01 01 01');
+                    if (IPS_GetProperty($ParentID, 'RightCutChar') <> '1b 1b 1b 1b')
+                        IPS_SetProperty($ParentID, 'RightCutChar', '1b 1b 1b 1b');
                     if (IPS_HasChanges($ParentID))
                         IPS_ApplyChanges($ParentID);
                 }
@@ -52,7 +50,7 @@ class EHz extends IPSModule
             if ($parentGUID == '{6DC3D946-0D31-450F-A8C6-C42DB8D7D4F1}')
             {
                 IPS_DisconnectInstance($this->InstanceID);
-                //IPS_LogMessage('Logamatic Gateway', 'Logamatic Gateway has invalid Parent.');
+                //IPS_LogMessage('EHz', 'EHz has invalid Parent.');
                 $result = false;
             }
         }
@@ -68,6 +66,17 @@ class EHz extends IPSModule
         IPS_LogMessage('EHz <- SerialPort:', bin2hex(utf8_decode($data->Buffer)));
         $stream = bin2hex(utf8_decode($data->Buffer));
         
+        for ($x==0 ; count ($Obis) ; $x++)
+        {
+            if (strpos($stream, $Obis[$x]) !== false)                    
+            {
+            $value = explode($Obis[$x], $stream);
+            $variableID = CheckVariableTYP($Obis[$x][1], $Obis[$x][2], $Obis[$x][3], $this->InstanceID);
+            SetValue($variableID, substr($value[1], 5, 3));
+            IPS_LogMessage('EHz <- SerialPort:', $value);
+            }
+        }
+        return true;
     }
     
 ################## DUMMYS / WOARKAROUNDS - protected
