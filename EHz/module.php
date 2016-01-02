@@ -89,10 +89,10 @@ class EHz extends IPSModule
         }
         else
         {
-            $string = explode("\n", trim($stream));        
-            $pos = strpos($string, '1B1B1B1B01010101');
-            //for($i = 0; $i < count($string); $i++)
-            IPS_LogMessage('EHz', $pos.'  :  '.$string);
+                 
+            $pos = strpos($stream, '1b1b1b1b01010101');
+            for($i = 0; $i < count($stream); $i++)
+            IPS_LogMessage('EHz', $pos.'  :  '.$stream);
         }
         return true;  
         
