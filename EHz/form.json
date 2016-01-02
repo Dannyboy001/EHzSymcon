@@ -6,15 +6,9 @@
             { "name": "Host", "type": "ValidationTextBox", "caption": "Host IP" },
             { "name": "Port", "type": "NumberSpinner", "caption": "Port" }            
         ],
-        "actions":
-        [
-            {              
-            }
-        ],
         "status":
         [
             { "code": 102, "icon": "active", "caption": "Host:Port erreichbar" },           
-            { "code": 202, "icon": "error", "caption": "Host:Port Adresse darf nicht leer sein" }
-            
+            { "code": 202, "icon": "error", "caption": "Host:Port Adresse darf nicht leer sein" }            
         ]
 }
