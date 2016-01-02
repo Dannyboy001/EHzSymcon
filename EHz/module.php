@@ -65,7 +65,7 @@ class EHz extends IPSModule
         {
             $instance = IPS_GetInstance($this->InstanceID);
             $parentGUID = IPS_GetInstance($instance['ConnectionID'])['ModuleInfo']['ModuleID'];
-            if ($parentGUID == '{6DC3D946-0D31-450F-A8C6-C42DB8D7D4F1}')
+            if ($parentGUID == '{3CFF0FD9-E306-41DB-9B5A-9D06D38576C3}')
             {
                 IPS_DisconnectInstance($this->InstanceID);
                 //IPS_LogMessage('EHz', 'EHz has invalid Parent.');
@@ -83,7 +83,7 @@ class EHz extends IPSModule
         $data = json_decode($JSONString);
         IPS_LogMessage('EHz <- Port:', bin2hex(utf8_decode($data->Buffer)));
         $stream = bin2hex(utf8_decode($data->Buffer));
-        
+        $x="";
         for ($x==0 ; count ($Obis) ; $x++)
         {
             if (strpos($stream, $Obis[$x][0]) !== false)                    
