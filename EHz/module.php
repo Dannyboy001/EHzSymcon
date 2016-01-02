@@ -1,6 +1,6 @@
 <?php
 require_once(__DIR__ . "/../sml.php");  // diverse Klassen
-
+$frame ='';
 class EHz extends IPSModule
 {
     public function Create()
