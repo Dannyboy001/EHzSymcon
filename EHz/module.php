@@ -83,20 +83,19 @@ class EHz extends IPSModule
         $data = json_decode($JSONString);
         IPS_LogMessage('EHz <- Port:', bin2hex(utf8_decode($data->Buffer)));
         $stream = bin2hex(utf8_decode($data->Buffer));
-        $x="";
-        $Obis="";
-        for ($x==0 ; count ($Obis) ; $x++)
+        if (strlen($stream < 851*2 ))
         {
-            if (strpos($stream, $Obis[$x][0]) !== false)                    
-            {
-            $value = explode('1B 1B 1B 1B 01 01 01 01', $stream);
-            $variableID = CheckVariableTYP($Obis[$x][1], $Obis[$x][2], $Obis[$x][3], $this->InstanceID);
-            SetValue($variableID, substr($value[1], 5, 3));
-            IPS_LogMessage('EHz <- Port:', $value);
-            }
+          return true;  
         }
-        $stream = '';
-        return true;
+        else
+        {
+            $string = explode("\n", trim($stream));        
+            $pos = strpos($string, '1B1B1B1B01010101');
+            //for($i = 0; $i < count($string); $i++)
+            IPS_LogMessage('EHz', $pos.'  :  '.$string);
+        }
+        return true;  
+        
     }
     
 ################## DUMMYS / WOARKAROUNDS - protected
