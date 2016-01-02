@@ -89,7 +89,7 @@ class EHz extends IPSModule
         {
             if (strpos($stream, $Obis[$x][0]) !== false)                    
             {
-            $value = explode($Obis[$x], $stream);
+            $value = explode('1B 1B 1B 1B 01 01 01 01', $stream);
             $variableID = CheckVariableTYP($Obis[$x][1], $Obis[$x][2], $Obis[$x][3], $this->InstanceID);
             SetValue($variableID, substr($value[1], 5, 3));
             IPS_LogMessage('EHz <- Port:', $value);
