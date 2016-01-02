@@ -1,7 +1,5 @@
 <?php
 
-function Obis ($data)
-    {
     $Obis[0] = array ('8181C78203FF'); //Hersteller-Identifikation
     $Obis[1] = array ('0100000009FF'); //Geräteeinzelidentifikation / Server-ID
     $Obis[2] = array ('0100010800FF'); //Zählerstand Totalregister
@@ -25,8 +23,7 @@ function Obis ($data)
     $Obis[20] = array ('0100340700FF'); //: Spannung L2
     $Obis[21] = array ('0100470700FF'); //: Strom L3
     $Obis[22] = array ('0100480700FF'); //: Spannung L3 
-    }
-    
+        
 function CheckVariableTYP($name, $vartyp, $profile, $parentID)
    {
   		$InstanzID = @IPS_GetVariableIDByName($name, $parentID);
