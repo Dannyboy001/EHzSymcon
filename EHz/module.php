@@ -93,6 +93,10 @@ class EHz extends IPSModule
                 //CheckVariableTYP($name, $vartyp, $profile, $this->InstanceID)
                 IPS_LogMessage('Obis'.$Obis[$i], $var);
             }
+            else
+            {
+                IPS_LogMessage('EHz', $var);
+            }
         }           
         return true;  
     }
