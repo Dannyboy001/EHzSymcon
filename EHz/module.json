@@ -1,7 +1,7 @@
 {
 	"id": "{9876378E-52C5-4E1C-B526-540ACBD448C2}",
 	"name": "EHz",
-	"type": 1,
+	"type": 2,
 	"vendor": "EHz",
 	"aliases": ["EHz"],	 
 	"parentRequirements": ["{AC6C6E74-C797-40B3-BA82-F135D941D1A2}"],
