@@ -81,7 +81,7 @@ class EHz extends IPSModule
      public function ReceiveData($JSONString)
     {
         $data = json_decode($JSONString);
-        IPS_LogMessage('EHz <- SerialPort:', bin2hex(utf8_decode($data->Buffer)));
+        IPS_LogMessage('EHz <- Port:', bin2hex(utf8_decode($data->Buffer)));
         $stream = bin2hex(utf8_decode($data->Buffer));
         
         for ($x==0 ; count ($Obis) ; $x++)
@@ -91,7 +91,7 @@ class EHz extends IPSModule
             $value = explode($Obis[$x], $stream);
             $variableID = CheckVariableTYP($Obis[$x][1], $Obis[$x][2], $Obis[$x][3], $this->InstanceID);
             SetValue($variableID, substr($value[1], 5, 3));
-            IPS_LogMessage('EHz <- SerialPort:', $value);
+            IPS_LogMessage('EHz <- Port:', $value);
             }
         }
         $stream = '';
