@@ -9,7 +9,7 @@ class EHz extends IPSModule
         parent::Create();
         $this->RequireParent("{3CFF0FD9-E306-41DB-9B5A-9D06D38576C3}", "Socket EHz");
         $this->RegisterPropertyString("Name", "Iskra");
-        $this->RegisterPropertyString("Host", "192.168.178.133");
+        $this->RegisterPropertyString("Host", "192.168.178.4");
         $this->RegisterPropertyBoolean("Open", true);
         $this->RegisterPropertyInteger("Port", 10002);
     }
