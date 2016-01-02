@@ -95,7 +95,7 @@ class EHz extends IPSModule
             }
             else
             {
-                IPS_LogMessage('EHz', $var);
+                IPS_LogMessage('EHz', $stream.'  :  '.$var);
             }
         }           
         return true;  
