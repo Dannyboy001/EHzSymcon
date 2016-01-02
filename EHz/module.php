@@ -1,6 +1,6 @@
 <?php
 require_once(__DIR__ . "/../sml.php");  // diverse Klassen
-$frame ='';
+
 class EHz extends IPSModule
 {
     public function Create()
@@ -83,21 +83,16 @@ class EHz extends IPSModule
         $data = json_decode($JSONString);
         //IPS_LogMessage('EHz <- Port:', bin2hex(utf8_decode($data->Buffer)));
         $stream = bin2hex(utf8_decode($data->Buffer));
-        $frame .= $stream;
-        if (strlen($frame) < 851 )
+        for($i = 0; $i < count($Obis); $i++)
         {
-          return true;  
-        }
-        else
-        {
-                 
-            $pos = strpos($frame, '1b1b1b1b01010101');
-            for($i = 0; $i < count($frame); $i++)
-            IPS_LogMessage('EHz', $pos.'  :  '.$frame);
-            $frame = '';
-        }
+            $var = strstr($stream, $Obis[$i]);
+            if ($var != false)
+            {
+                //CheckVariableTYP($name, $vartyp, $profile, $this->InstanceID)
+                IPS_LogMessage('Obis'.$Obis[$i], $var);
+            }
+        }           
         return true;  
-        
     }
     
 ################## DUMMYS / WOARKAROUNDS - protected
