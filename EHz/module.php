@@ -1,10 +1,10 @@
 <?php
 require_once(__DIR__ . "/../sml.php");  // diverse Klassen
     $Obis[0] = '8181C78203FF'; //Hersteller-Identifikation
-    $Obis[1] = array ('0100000009FF'); //Geräteeinzelidentifikation / Server-ID
-    $Obis[2] = array ('0100010800FF'); //Zählerstand Totalregister
-    $Obis[3] = array ('0100010801FF'); //Zählerstand Tarif 1
-    $Obis[4] = array ('0100010802FF'); //Zählerstand Tarif 2
+    $Obis[1] = '0100000009FF'; //Geräteeinzelidentifikation / Server-ID
+    $Obis[2] = '0100010800FF'; //Zählerstand Totalregister
+    $Obis[3] = '0100010801FF'; //Zählerstand Tarif 1
+    $Obis[4] = '0100010802FF'; //Zählerstand Tarif 2
     $Obis[5] = array ('01000F0700FF'); //aktuelle Wirkleistung
     $Obis[6] = array ('0100150700FF'); //: Wirkleistung L1
     $Obis[7] = array ('0100290700FF'); //: Wirkleistung L2
