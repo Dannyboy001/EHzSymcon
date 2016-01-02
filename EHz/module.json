@@ -4,7 +4,7 @@
 	"type": 2,
 	"vendor": "EHz",
 	"aliases": ["EHz"],	 
-	"parentRequirements": ["{AC6C6E74-C797-40B3-BA82-F135D941D1A2}"],
+	"parentRequirements": ["{3CFF0FD9-E306-41DB-9B5A-9D06D38576C3}"],
 	"childRequirements": [],
 	"implemented": [],
         "prefix": "EHz"
