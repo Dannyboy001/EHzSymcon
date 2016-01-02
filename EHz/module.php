@@ -81,10 +81,10 @@ class EHz extends IPSModule
      public function ReceiveData($JSONString)
     {
         $data = json_decode($JSONString);
-        IPS_LogMessage('EHz <- Port:', bin2hex(utf8_decode($data->Buffer)));
+        //IPS_LogMessage('EHz <- Port:', bin2hex(utf8_decode($data->Buffer)));
         $stream = bin2hex(utf8_decode($data->Buffer));
-        $data = $data.$stream;
-        if (strlen($data < 851*2 ))
+        $data .= $stream;
+        if (strlen($data) < 851 )
         {
           return true;  
         }
@@ -94,6 +94,7 @@ class EHz extends IPSModule
             $pos = strpos($data, '1b1b1b1b01010101');
             for($i = 0; $i < count($data); $i++)
             IPS_LogMessage('EHz', $pos.'  :  '.$data);
+            $data = '';
         }
         return true;  
         
