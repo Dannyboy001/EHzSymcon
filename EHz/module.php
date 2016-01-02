@@ -105,7 +105,7 @@ class EHz extends IPSModule
         $data = json_decode($JSONString);
         //IPS_LogMessage('EHz <- Port:', bin2hex(utf8_decode($data->Buffer)));
         $stream = bin2hex(utf8_decode($data->Buffer));
-        for($i = 0; $i < count($Obis); $i++)
+        for($i = 0; $i < 22; $i++)
         {
             $var = strstr($stream, $Obis[$i]);
             if ($var != false)
