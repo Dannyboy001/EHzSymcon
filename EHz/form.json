@@ -1,9 +1,9 @@
 {	
 	"elements":
 	[   
-            { "name": "Name des EHz", "type": "ValidationTextBox", "caption": "Name" },
-            { "name": "Open", "type": "CheckBox", "caption": "Open" },
-            { "name": "Host", "type": "ValidationTextBox", "caption": "Host" },
+            { "name": "Name", "type": "ValidationTextBox", "caption": "Name des EHz" },
+            { "name": "Open", "type": "CheckBox", "caption": "Port öffnen" },
+            { "name": "Host", "type": "ValidationTextBox", "caption": "Host IP" },
             { "name": "Port", "type": "NumberSpinner", "caption": "Port" }            
         ],
         "actions":
