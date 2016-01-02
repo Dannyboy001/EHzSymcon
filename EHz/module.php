@@ -84,6 +84,7 @@ class EHz extends IPSModule
         IPS_LogMessage('EHz <- Port:', bin2hex(utf8_decode($data->Buffer)));
         $stream = bin2hex(utf8_decode($data->Buffer));
         $x="";
+        $Obis="";
         for ($x==0 ; count ($Obis) ; $x++)
         {
             if (strpos($stream, $Obis[$x][0]) !== false)                    
