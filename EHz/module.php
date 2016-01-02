@@ -87,7 +87,7 @@ class EHz extends IPSModule
         $Obis = array ('8181C78203FF', '0100000009FF', '0100010800FF', '0100010801FF', '0100010802FF', '01000F0700FF', '0100150700FF', '0100290700FF', '01003D0700FF', '0100011100FF', '8181C78205FF', '010060320002', '010060320003', '010060320004', '010060320005', '010060320303', '010060320304', '01001F0700FF', '0100200700FF', '0100330700FF', '0100340700FF', '0100470700FF', '0100480700FF');
         for($i = 0; $i < 22; $i++)
         {
-            $var = strstr($stream, $Obis[$i]);
+            $var = stristr($stream, $Obis[$i]);
             if ($var != false)
             {
                 //CheckVariableTYP($name, $vartyp, $profile, $this->InstanceID)
