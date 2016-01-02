@@ -7,35 +7,53 @@ class EHz extends IPSModule
     {
         //Never delete this line!
         parent::Create();
-        $this->ConnectParent("{AC6C6E74-C797-40B3-BA82-F135D941D1A2}", "EHz");
-        $this->RegisterPropertyString("name", "Hauptzähler");
+        $this->RequireParent("{3CFF0FD9-E306-41DB-9B5A-9D06D38576C3}", "Socket EHz");
+        $this->RegisterPropertyString("Name", "Iskra");
+        $this->RegisterPropertyString("Host", "192.168.178.133");
+        $this->RegisterPropertyBoolean("Open", true);
+        $this->RegisterPropertyInteger("Port", 10002);
     }
-
     public function ApplyChanges()
     {
         //Never delete this line!
         parent::ApplyChanges();
-         //prüfen ob IO ein Cutter ist
-        //        
-        // Zwangskonfiguration des Cutters, wenn vorhanden und verbunden
-        // Aber nie bei einem Neustart :)
-        
-            $ParentID = $this->GetParent();
-            if (!($ParentID === false))
+        $change = false;
+        // Zwangskonfiguration des ClientSocket
+        $ParentID = $this->GetParent();
+        if (!($ParentID === false))
+        {
+            if (IPS_GetProperty($ParentID, 'Host') <> $this->ReadPropertyString('Host'))
             {
-                $ParentInstance = IPS_GetInstance($ParentID);
-                if ($ParentInstance['ModuleInfo']['ModuleID'] == '{AC6C6E74-C797-40B3-BA82-F135D941D1A2}')
-                {
-                    if (IPS_GetProperty($ParentID, 'ParseType') <> '0')
-                        IPS_SetProperty($ParentID, 'ParseType', '0');
-                    if (IPS_GetProperty($ParentID, 'LeftCutChar') <> '01 01 01 01')
-                        IPS_SetProperty($ParentID, 'LeftCutChar', '01 01 01 01');
-                    if (IPS_GetProperty($ParentID, 'RightCutChar') <> '1b 1b 1b 1b')
-                        IPS_SetProperty($ParentID, 'RightCutChar', '1b 1b 1b 1b');
-                    if (IPS_HasChanges($ParentID))
-                        IPS_ApplyChanges($ParentID);
-                }
+                IPS_SetProperty($ParentID, 'Host', $this->ReadPropertyString('Host'));
+                $change = true;
             }
+            if (IPS_GetProperty($ParentID, 'Port') <> $this->ReadPropertyInteger('Port'))
+            {
+                IPS_SetProperty($ParentID, 'Port', $this->ReadPropertyInteger('Port'));
+                $change = true;
+            }
+            $ParentOpen = $this->ReadPropertyBoolean('Open');
+            // Keine Verbindung erzwingen wenn Host leer ist, sonst folgt später Exception.
+         
+            if (IPS_GetProperty($ParentID, 'Open') <> $ParentOpen)
+            {
+                IPS_SetProperty($ParentID, 'Open', $ParentOpen);
+                $change = true;
+            }
+            if ($change)
+                @IPS_ApplyChanges($ParentID);
+        }
+        /* Eigene Profile
+        
+        */
+        //Workaround für persistente Daten der Instanz
+                
+        // Wenn wir verbunden sind, am Gateway mit listen anmelden für Events
+        if (($this->ReadPropertyBoolean('Open'))
+                and ( $this->HasActiveParent($ParentID)))
+        {
+             $this->SetStatus(102);                    
+        }
         
     }
     

@@ -1,11 +1,21 @@
-{
-    "elements":
-            [
-                {
-                    "name": "name",
-                    "type": "ValidationTextBox",
-                    "caption": "Name des Zählers"
-                }             
-            ]
-   
+{	
+	"elements":
+	[   
+            { "name": "Name des EHz", "type": "ValidationTextBox", "caption": "Name" },
+            { "name": "Open", "type": "CheckBox", "caption": "Open" },
+            { "name": "Host", "type": "ValidationTextBox", "caption": "Host" },
+            { "name": "Port", "type": "NumberSpinner", "caption": "Port" }            
+        ],
+        "actions":
+        [
+            {
+               
+            }
+        ],
+        "status":
+        [
+            { "code": 102, "icon": "active", "caption": "Host:Port erreichbar" },           
+            { "code": 202, "icon": "error", "caption": "Host:Port Adresse darf nicht leer sein" }
+            
+        ]
 }
