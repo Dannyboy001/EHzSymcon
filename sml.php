@@ -36,7 +36,7 @@ function CheckSML($stream, $parentID)
             }
             else
             {
-              IPS_LogMessage('EHz <- Port:', $stream);
+              IPS_LogMessage('EHz <-> Port:', $stream);
             }
         }
     return true;
