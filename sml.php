@@ -24,7 +24,7 @@ function EHz($typ, $value)
     return $name;
     }
     
-function CheckSML($stream, $name, $parentID)
+function CheckSML($stream, $parentID)
     {
     for($i = 1; $i < count (EHz(0,1)) ; $i++)
         {
