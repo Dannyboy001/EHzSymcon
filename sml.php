@@ -31,7 +31,7 @@ function CheckSML($stream, $parentID)
             $var = stristr($stream, EHz($i,1));
             if ($var != false)
             {
-              $InstanzID = CheckVariable(EHz($i,0), EHz($i,2),EHz($i,3), $parentID);
+              CheckVariable(EHz($i,0), EHz($i,2),EHz($i,3), $parentID);
               IPS_LogMessage('EHz', $i);
             }
             else
