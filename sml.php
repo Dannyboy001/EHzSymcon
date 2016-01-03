@@ -26,6 +26,7 @@ function EHz($dataset, $value)
     
 function CheckSML($stream, $parentID)
     {
+    IPS_LogMessage('EHz <- Port:', $stream);
     for($i = 1; $i < count (6); $i++)
         {
             $var = stristr($stream, EHz($i,1));
