@@ -31,18 +31,18 @@ function CheckSML($stream, $parentID)
             $var = stristr($stream, EHz($i,1));
             if ($var != false)
             {
-              $InstanzID = SetVariable(EHz($i,0), EHz($i,2),EHz($i,3), $parentID);
-              IPS_LogMessage('EHz',$InstanzID);
+              $InstanzID = CheckVariable(EHz($i,0), EHz($i,2),EHz($i,3), $parentID);
+              IPS_LogMessage('EHz', $i);
             }
             else
             {
-              IPS_LogMessage('EHz', $stream.'  Error ');
+              IPS_LogMessage('EHz', $i.'  Error ');
             }
         }
     return true;
     }
     
-function SetVariable($name, $vartyp, $profile, $parentID)
+function CheckVariable($name, $vartyp, $profile, $parentID)
     {
         $InstanzID = @IPS_GetVariableIDByName($name, $parentID);
         if ($InstanzID === false)
