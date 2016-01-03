@@ -5,20 +5,33 @@ $Obisname = array ('Hersteller-Identifikation', 'Geräteeinzelidentifikation', '
 $Obisvartyp = array (3,3,2,2,2,2,2,2,2,3,3,2,2,2,2,2,2,2,2,2,2,2,2);
 $Obisprofile = array ('~String', '~String', '~Electricity', '~Electricity', '~Electricity', '~Power', '~Power', '~Power', '~Power', '~String', '~String', '~Temperature', '~Temperature', '~Temperature', '~Temperature', '~Volt', '~Volt', '~Ampere', '~Volt', '~Ampere', '~Volt', '~Ampere', '~Volt');    
 
-function Obis ($typ, $offset, $value)
+function EHz($typ, $value)
     {
-    $Obis[0] = array ('Hersteller-Identifikation','8181C78203FF',3,'~String');
+    $EHz[0] = array ('EMH',6);
+    $EHz[1] = array ('Hersteller-Identifikation','8181C78203FF',3,'~String');
+    $EHz[2] = array ('Geräteeinzelidentifikation','0100000009FF',3,'~String');
+    $EHz[3] = array ('Zählerstand Totalregister','0100010800FF',2,'~Electricity');
+    $EHz[4] = array ('Zählerstand Tarif 1','0100010801FF',2,'~Electricity');
+    $EHz[5] = array ('Zählerstand Tarif 2','0100010802FF',2,'~Electricity');
+    $EHz[6] = array ('öffentlicher Schlüssel','8181C78205FF',3,'~String');
+    
+    $name = $EHz[$typ][$value];
+    if ($name === false) 
+        {
+        IPS_LogMessage('EHz', 'Datentyp :'.$typ.' : '.$value.'existiert nicht !');
+        return false;
+        }
+    return $name;
     }
     
-    
-function CheckSML($stream, $parentID)
+function CheckSML($stream, $name, $parentID)
     {
-    for($i = 0; $i < count($Obis); $i++)
+    for($i = 1; $i < count (EHz(0,1)) ; $i++)
         {
-            $var = stristr($stream, $Obis[$i]);
+            $var = stristr($stream, EHz($i,1));
             if ($var != false)
             {
-                CheckVariableTYP($Obisname[$i], $Obisvartyp[$i], $Obisprofile[$i], $parentID);
+              $InstanzID = SetVariable(EHz($i,0), EHz($i,2),EHz($i,3), $parentID);
                 //IPS_LogMessage($Obisname[$i], $var);
             }
             else
@@ -28,17 +41,18 @@ function CheckSML($stream, $parentID)
         }
     return true;
     }
-function CheckVariableTYP($name, $vartyp, $profile, $parentID)
-   {
-  		$InstanzID = @IPS_GetVariableIDByName($name, $parentID);
-                if ($InstanzID === false)
-                    {
-                    $InstanzID = IPS_CreateVariable($vartyp);
-                    IPS_SetName($InstanzID, $name); // Instanz benennen
-                    IPS_SetParent($InstanzID, $parentID);
-                    IPS_SetVariableCustomProfile($InstanzID, $profile);
-                    }
-                //echo "ID: ".$InstanzID." ".$name."\n";
-                return $InstanzID;
-   }
+    
+function SetVariable($name, $vartyp, $profile, $parentID)
+    {
+        $InstanzID = @IPS_GetVariableIDByName($name, $parentID);
+        if ($InstanzID === false)
+        {
+            $InstanzID = IPS_CreateVariable($vartyp);
+            IPS_SetName($InstanzID, $name); // Instanz benennen
+            IPS_SetParent($InstanzID, $parentID);
+            IPS_SetVariableCustomProfile($InstanzID, $profile);
+        }
+        //echo "ID: ".$InstanzID." ".$name."\n";
+    return $InstanzID;
+    }
 ?>
