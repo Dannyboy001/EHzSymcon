@@ -5,7 +5,7 @@ $Obisname = array ('Hersteller-Identifikation', 'Geräteeinzelidentifikation', '
 $Obisvartyp = array (3,3,2,2,2,2,2,2,2,3,3,2,2,2,2,2,2,2,2,2,2,2,2);
 $Obisprofile = array ('~String', '~String', '~Electricity', '~Electricity', '~Electricity', '~Power', '~Power', '~Power', '~Power', '~String', '~String', '~Temperature', '~Temperature', '~Temperature', '~Temperature', '~Volt', '~Volt', '~Ampere', '~Volt', '~Ampere', '~Volt', '~Ampere', '~Volt');    
 
-function EHz($typ, $value)
+function EHz($dataset, $value)
     {
     $EHz[0] = array ('EMH',6);
     $EHz[1] = array ('Hersteller-Identifikation','8181C78203FF',3,'~String');
@@ -15,10 +15,10 @@ function EHz($typ, $value)
     $EHz[5] = array ('Zählerstand Tarif 2','0100010802FF',2,'~Electricity');
     $EHz[6] = array ('öffentlicher Schlüssel','8181C78205FF',3,'~String');
     
-    $name = $EHz[$typ][$value];
+    $name = $EHz[$dataset][$value];
     if ($name === false) 
         {
-        IPS_LogMessage('EHz', 'Datentyp :'.$typ.' : '.$value.'existiert nicht !');
+        IPS_LogMessage('EHz', 'Datentyp :'.$dataset.' : '.$value.'existiert nicht !');
         return false;
         }
     return $name;
@@ -26,7 +26,7 @@ function EHz($typ, $value)
     
 function CheckSML($stream, $parentID)
     {
-    for($i = 1; $i < count (EHz(0,1)) ; $i++)
+    for($i = 1; $i < count (6); $i++)
         {
             $var = stristr($stream, EHz($i,1));
             if ($var != false)
