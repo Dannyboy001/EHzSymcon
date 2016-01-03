@@ -8,7 +8,7 @@ class EHz extends IPSModule
         //Never delete this line!
         parent::Create();
         $this->RequireParent("{3CFF0FD9-E306-41DB-9B5A-9D06D38576C3}", "Socket EHz");
-        $this->RegisterPropertyString("Name", "Iskra");
+        $this->RegisterPropertyString("Name", "EMH");
         $this->RegisterPropertyString("Host", "192.168.178.4");
         $this->RegisterPropertyBoolean("Open", true);
         $this->RegisterPropertyInteger("Port", 10002);
@@ -83,20 +83,7 @@ class EHz extends IPSModule
         $data = json_decode($JSONString);
         //IPS_LogMessage('EHz <- Port:', bin2hex(utf8_decode($data->Buffer)));
         $stream = bin2hex(utf8_decode($data->Buffer));
-        
-        for($i = 0; $i < 22; $i++)
-        {
-            $var = stristr($stream, $Obis[$i]);
-            if ($var != false)
-            {
-                CheckVariableTYP($Obisname[$i], $Obisvartyp[$i], $Obisprofile[$i], $this->InstanceID);
-                //IPS_LogMessage($Obisname[$i], $var);
-            }
-            else
-            {
-                //IPS_LogMessage('EHz', $stream.'  :  '.$var);
-            }
-        }           
+        CheckSML($stream, $this->InstanceID);
         return true;  
     }
     
