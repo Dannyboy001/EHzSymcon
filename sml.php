@@ -32,11 +32,11 @@ function CheckSML($stream, $parentID)
             if ($var != false)
             {
               $InstanzID = SetVariable(EHz($i,0), EHz($i,2),EHz($i,3), $parentID);
-                //IPS_LogMessage($Obisname[$i], $var);
+              IPS_LogMessage('EHz',$InstanzID);
             }
             else
             {
-                //IPS_LogMessage('EHz', $stream.'  :  '.$var);
+              IPS_LogMessage('EHz', $stream.'  Error ');
             }
         }
     return true;
