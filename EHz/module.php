@@ -84,10 +84,10 @@ class EHz extends IPSModule
         //IPS_LogMessage('EHz <- Port:', bin2hex(utf8_decode($data->Buffer)));
         $stream = bin2hex(utf8_decode($data->Buffer));
         $x = EHz(0,1);
-        IPS_LogMessage('EHz', $x);
         for($i = 1; $i < count($x); $i++)
         {
             $var = stristr($stream, EHz($i,1));
+            IPS_LogMessage('EHz', $i);
             if ($var != false)
             {
               CheckVariable(EHz($i,0), EHz($i,2),EHz($i,3), $this->InstanceID);
