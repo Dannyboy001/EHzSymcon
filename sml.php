@@ -26,8 +26,7 @@ function EHz($dataset, $value)
     
 function CheckSML($stream, $parentID)
     {
-    IPS_LogMessage('EHz <- Port:', $stream);
-    for($i = 1; $i < count (6); $i++)
+    for($i = 1; $i < count(EHz(0,1)) ; $i++)
         {
             $var = stristr($stream, EHz($i,1));
             if ($var != false)
@@ -37,7 +36,7 @@ function CheckSML($stream, $parentID)
             }
             else
             {
-              IPS_LogMessage('EHz', $i.'  Error ');
+              IPS_LogMessage('EHz <- Port:', $stream);
             }
         }
     return true;
