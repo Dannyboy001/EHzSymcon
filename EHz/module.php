@@ -81,7 +81,7 @@ class EHz extends IPSModule
      public function ReceiveData($JSONString)
     {
         $data = json_decode($JSONString);
-        IPS_LogMessage('EHz <- Port:', bin2hex(utf8_decode($data->Buffer)));
+        //IPS_LogMessage('EHz <- Port:', bin2hex(utf8_decode($data->Buffer)));
         $stream = bin2hex(utf8_decode($data->Buffer));
         CheckSML($stream, $this->InstanceID);
         return true;  
