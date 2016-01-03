@@ -13,7 +13,7 @@ function Obis ($typ, $offset, $value)
     
 function CheckSML($stream, $parentID)
     {
-    for($i = 0; $i < count($Obisname); $i++)
+    for($i = 0; $i < count($Obis); $i++)
         {
             $var = stristr($stream, $Obis[$i]);
             if ($var != false)
@@ -26,6 +26,7 @@ function CheckSML($stream, $parentID)
                 //IPS_LogMessage('EHz', $stream.'  :  '.$var);
             }
         }
+    return true;
     }
 function CheckVariableTYP($name, $vartyp, $profile, $parentID)
    {
